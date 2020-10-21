@@ -1,0 +1,6 @@
+@import "~bootstrap/scss/bootstrap"; // Procurar dentro de node modules
+
+$fa-font-path: "~font-awesome/fonts"; // Encontrando diretório das fontes
+@import "~font-awesome/scss/font-awesome";
+
+@import "custom"; // Importando arquivo custom

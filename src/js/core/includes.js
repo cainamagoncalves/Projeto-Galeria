@@ -1,5 +1,14 @@
 import $ from 'jquery'
 
+const loadHtmlSuccessCallback = []
+
+export function onLoadHtmlSuccess(callback) {
+    // Se a calback não estiver no array
+    if(!loadHtmlSuccessCallback.includes(callback)) {
+        loadHtmlSuccessCallback.push(callback)
+    }
+}
+
 // Função para ler todos atributos com wm-include
 function loadIncludes(parent) {
     if(!parent) parent = 'body'
@@ -16,6 +25,7 @@ function loadIncludes(parent) {
                 $(elem).removeAttr('wm-include')
 
                 // Carregando todos os elementos includes
+                loadHtmlSuccessCallback.forEach(callback => callback(data))
                 loadIncludes(elem)
             }
         })
